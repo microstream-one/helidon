@@ -904,6 +904,11 @@
                 <artifactId>helidon-logging-log4j</artifactId>
                 <version>${helidon.version}</version>
             </dependency>
+            <dependency>
+            	<groupId>io.helidon.microstream</groupId>
+            	<artifactId>helidon-microstream-core</artifactId>
+            	<version>${helidon.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 </project>

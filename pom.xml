@@ -184,6 +184,7 @@
         <module>fault-tolerance</module>
         <module>graphql</module>
         <module>logging</module>
+		<module>microstream</module>
     </modules>
 
 
