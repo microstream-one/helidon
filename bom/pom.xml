@@ -1073,6 +1073,11 @@
                 <groupId>io.helidon.tests.integration.tools</groupId>
                 <artifactId>helidon-tests-integration-tools-client</artifactId>
                 <version>${project.version}</version>
+            <!-- Microstream -->
+            <dependency>
+            	<groupId>io.helidon.microstream</groupId>
+            	<artifactId>helidon-microstream-core</artifactId>
+            	<version>${helidon.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
