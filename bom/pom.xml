@@ -1084,6 +1084,11 @@
             	<artifactId>helidon-microstream-health</artifactId>
             	<version>${helidon.version}</version>
             </dependency>
+            <dependency>
+            	<groupId>io.helidon.microstream</groupId>
+            	<artifactId>helidon-microstream-metrics</artifactId>
+            	<version>${helidon.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 </project>
