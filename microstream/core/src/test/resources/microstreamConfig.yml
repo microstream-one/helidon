@@ -18,6 +18,5 @@ openapi:
     port: 0
     
 microstream:
-    baseDirectory            : 'c:\temp\configTest'
     channelCount             : 4
     housekeepingIntervalMs   : 2000
