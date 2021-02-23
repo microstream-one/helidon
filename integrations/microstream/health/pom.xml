@@ -4,8 +4,8 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>io.helidon.microstream</groupId>
-		<artifactId>helidon-microstream-project</artifactId>
+		<groupId>io.helidon.integrations.microstream</groupId>
+		<artifactId>helidon-integrations-microstream-project</artifactId>
 		<version>2.1.1-SNAPSHOT</version>
 	</parent>
 
@@ -17,8 +17,8 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>io.helidon.microstream</groupId>
-			<artifactId>helidon-microstream-core</artifactId>
+			<groupId>io.helidon.integrations.microstream</groupId>
+			<artifactId>helidon-integrations-microstream</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>io.helidon.health</groupId>

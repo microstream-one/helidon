@@ -906,18 +906,18 @@
             </dependency>
             <!-- Microstream support -->
             <dependency>
-            	<groupId>io.helidon.microstream</groupId>
-            	<artifactId>helidon-microstream-core</artifactId>
+            	<groupId>io.helidon.integrations.microstream</groupId>
+            	<artifactId>helidon-integrations-microstream</artifactId>
             	<version>${helidon.version}</version>
             </dependency>
             <dependency>
-            	<groupId>io.helidon.microstream</groupId>
-            	<artifactId>helidon-microstream-health</artifactId>
+            	<groupId>io.helidon.integrations.microstream</groupId>
+            	<artifactId>helidon-integrations-microstream-health</artifactId>
             	<version>${helidon.version}</version>
             </dependency>
             <dependency>
-            	<groupId>io.helidon.microstream</groupId>
-            	<artifactId>helidon-microstream-metrics</artifactId>
+            	<groupId>io.helidon.integrations.microstream</groupId>
+            	<artifactId>helidon-integrations-microstream-metrics</artifactId>
             	<version>${helidon.version}</version>
             </dependency>
         </dependencies>
