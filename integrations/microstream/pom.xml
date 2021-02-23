@@ -4,15 +4,15 @@
                              http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>io.helidon</groupId>
-		<artifactId>helidon-project</artifactId>
+		<groupId>io.helidon.integrations</groupId>
+		<artifactId>helidon-integrations-project</artifactId>
 		<version>2.1.1-SNAPSHOT</version>
 	</parent>
 
-	<groupId>io.helidon.microstream</groupId>
-	<artifactId>helidon-microstream-project</artifactId>
+	<groupId>io.helidon.integrations.microstream</groupId>
+	<artifactId>helidon-integrations-microstream-project</artifactId>
 	<packaging>pom</packaging>
-	<name>Helidon Microstream Project</name>
+	<name>Helidon Integrations Microstream Project</name>
 
 	<modules>
 		<module>core</module>
