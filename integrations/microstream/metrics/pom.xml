@@ -1,29 +1,30 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-
-	<parent>
-		<groupId>io.helidon.microstream</groupId>
-		<artifactId>helidon-microstream-project</artifactId>
-		<version>2.1.1-SNAPSHOT</version>
-	</parent>
-
-	<artifactId>helidon-microstream-health</artifactId>
-	<name>Helidon Microstream Health</name>
-	<packaging>jar</packaging>
-
-	<description>Health check for Microstream</description>
-
-	<dependencies>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>io.helidon.microstream</groupId>
+    <artifactId>helidon-microstream-project</artifactId>
+    <version>2.1.1-SNAPSHOT</version>
+  </parent>
+  
+  <artifactId>helidon-integrations-microstream-metrics</artifactId>
+  <name>Helidon Integrations Microstream Metrics</name>
+  <packaging>jar</packaging>
+  
+  <description>Metrics support for microstream</description>
+  
+  <dependencies>
 		<dependency>
 			<groupId>io.helidon.microstream</groupId>
 			<artifactId>helidon-microstream-core</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>io.helidon.health</groupId>
-			<artifactId>helidon-health</artifactId>
+			<groupId>io.helidon.metrics</groupId>
+			<artifactId>helidon-metrics</artifactId>
 		</dependency>
+ 		<dependency>
+            <groupId>io.helidon.config</groupId>
+            <artifactId>helidon-config</artifactId>
+        </dependency>
 
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
@@ -52,5 +53,5 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-
+  
 </project>

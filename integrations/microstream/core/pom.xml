@@ -9,8 +9,8 @@
 		<version>2.1.1-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>helidon-microstream-core</artifactId>
-	<name>Helidon Microstream Core</name>
+	<artifactId>helidon-integrations-microstream</artifactId>
+	<name>Helidon Integrations Microstream</name>
 	<packaging>jar</packaging>
 
 	<repositories>
