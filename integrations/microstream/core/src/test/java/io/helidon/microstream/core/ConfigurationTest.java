@@ -30,7 +30,7 @@ public class ConfigurationTest {
 				.build();
 
 		EmbeddedStorageManagerBuilder embeddedStorageManagerBuilder = EmbeddedStorageManagerBuilder.builder();
-		EmbeddedStorageManager embeddedStorageManager = embeddedStorageManagerBuilder.config(helidonConfig).build();
+		EmbeddedStorageManager embeddedStorageManager = embeddedStorageManagerBuilder.config(helidonConfig.get("microstream")).build();
 
 		assertNotNull(embeddedStorageManager, "embeddedStorageManager is null!");
 
