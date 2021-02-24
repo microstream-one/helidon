@@ -51,7 +51,7 @@ public class EmbeddedStorageManagerBuilder implements io.helidon.common.Builder<
 	 * @return the fluent API builder
 	 */
 	public EmbeddedStorageManagerBuilder config(Config config) {
-		Map<String, String> configMap = config.get("microstream").detach().asMap().get();
+		Map<String, String> configMap = config.detach().asMap().get();
 		ConfigurationPropertyParser.New().parseProperties(configMap, configuration);
 
 		return this;
