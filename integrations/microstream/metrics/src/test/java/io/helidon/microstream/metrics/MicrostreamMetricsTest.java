@@ -39,8 +39,7 @@ public class MicrostreamMetricsTest {
 	}
 	
 	@Test
-	void testGlobalFileCount()
-	{								
+	void testGlobalFileCount() {								
 		Gauge<?> metric = findFirstGauge("microstream.globalFileCount");
 		
 		long value = (long) metric.getValue();
@@ -48,8 +47,7 @@ public class MicrostreamMetricsTest {
 	}
 	
 	@Test
-	void testLivDataLength()
-	{								
+	void testLivDataLength() {								
 		Gauge<?> metric = findFirstGauge("microstream.liveDataLength");
 		
 		long value = (long) metric.getValue();
@@ -57,23 +55,20 @@ public class MicrostreamMetricsTest {
 	}
 	
 	@Test
-	void testTotalDataLength()
-	{								
+	void testTotalDataLength() {								
 		Gauge<?> metric = findFirstGauge("microstream.totalDataLength");
 		
 		long value = (long) metric.getValue();
 		assertThat("metric microstream.totalDataLength", value, is(2002L));						
 	}
 	
-	private Gauge<?> findFirstGauge(String name)
-	{
+	private Gauge<?> findFirstGauge(String name) {
 		MetricRegistry metricsRegistry = RegistryFactory.getInstance().getRegistry(MetricRegistry.Type.VENDOR);		
 		MetricID id = metricsRegistry.getGauges(new MetricNameFilter(name)).firstKey();		
 		return metricsRegistry.getGauges().get(id);
 	}
 	
 	private static class MetricNameFilter implements MetricFilter {
-
         private final String name;
 
         private MetricNameFilter(String name) {

@@ -68,10 +68,7 @@ public class MicrostreamMetricsSupport {
 			registryFactory = RegistryFactory.getInstance(config);			
 		}
 		
-		this.vendorRegistry = registryFactory.getRegistry(MetricRegistry.Type.VENDOR);	
-		
-		
-		
+		this.vendorRegistry = registryFactory.getRegistry(MetricRegistry.Type.VENDOR);				
 	}
     	
 	private void register(Metadata meta, Metric metric, Tag... tags) {
@@ -82,8 +79,7 @@ public class MicrostreamMetricsSupport {
         }
     }
 	
-	public void registerMetrics()
-	{		
+	public void registerMetrics() {		
 		register(GLOBAL_FILE_COUNT, (Gauge<Long>) () -> embeddedStorageManager.createStorageStatistics().fileCount());
 		register(LIVE_DATA_LENGTH, (Gauge<Long>) () -> embeddedStorageManager.createStorageStatistics().liveDataLength());
 		register(TOTAL_DATA_LENGTH, (Gauge<Long>) () -> embeddedStorageManager.createStorageStatistics().totalDataLength());		
@@ -133,6 +129,5 @@ public class MicrostreamMetricsSupport {
     		this.config = config;    		
     		return this;
     	}
-    }
-	
+    }	
 }
