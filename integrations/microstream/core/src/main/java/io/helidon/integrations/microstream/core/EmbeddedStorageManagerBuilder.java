@@ -1,4 +1,4 @@
-package io.helidon.microstream.core;
+package io.helidon.integrations.microstream.core;
 
 import java.time.Duration;
 import java.util.Map;

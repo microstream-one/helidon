@@ -1,4 +1,4 @@
-package io.helidon.microstream.health;
+package io.helidon.integrations.microstream.health;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
 

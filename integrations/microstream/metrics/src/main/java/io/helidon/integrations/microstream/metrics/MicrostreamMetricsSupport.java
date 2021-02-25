@@ -1,4 +1,4 @@
-package io.helidon.microstream.metrics;
+package io.helidon.integrations.microstream.metrics;
 
 import java.util.Objects;
 

@@ -1,4 +1,4 @@
-package io.helidon.microstream.health;
+package io.helidon.integrations.microstream.health;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -11,6 +11,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
+import io.helidon.integrations.microstream.health.MicrostreamHealthCheck;
 import one.microstream.storage.types.EmbeddedStorageManager;
 
 public class MicrostreamHealthTest {

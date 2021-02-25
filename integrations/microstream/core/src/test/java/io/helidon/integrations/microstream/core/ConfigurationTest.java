@@ -1,4 +1,4 @@
-package io.helidon.microstream.core;
+package io.helidon.integrations.microstream.core;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -15,6 +15,7 @@ import org.junit.jupiter.api.io.TempDir;
 import io.helidon.config.ClasspathConfigSource;
 import io.helidon.config.Config;
 import io.helidon.config.ConfigSources;
+import io.helidon.integrations.microstream.core.EmbeddedStorageManagerBuilder;
 import one.microstream.storage.types.EmbeddedStorageManager;
 
 public class ConfigurationTest {
