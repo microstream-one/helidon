@@ -1,7 +1,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
-                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>io.helidon.integrations.microstream</groupId>
@@ -9,41 +8,27 @@
 		<version>2.1.1-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>helidon-integrations-microstream</artifactId>
-	<name>Helidon Integrations Microstream</name>
+	<artifactId>helidon-integrations-microstream-cache</artifactId>
+	<name>Helidon Integrations Microstream Cache</name>
 	<packaging>jar</packaging>
 
-	<repositories>
-		<repository>
-			<id>microstream-releases</id>
-			<url>https://repo.microstream.one/repository/maven-public</url>
-		</repository>
-		<repository>
-			<id>microstream-maven-snapshots</id>
-			<url>https://repo.microstream.one/repository/maven-snapshots/</url>
-		</repository>
-	</repositories>
+	<description>Microstream JCache implementation</description>
 
 	<dependencies>
 		<dependency>
 			<groupId>one.microstream</groupId>
-			<artifactId>storage.embedded</artifactId>
+			<artifactId>cache</artifactId>
 			<version>${microstream.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>one.microstream</groupId>
-			<artifactId>storage.embedded.configuration</artifactId>
-			<version>${microstream.version}</version>
+			<groupId>io.helidon.integrations.microstream</groupId>
+			<artifactId>helidon-integrations-microstream</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>one.microstream</groupId>
-			<artifactId>configuration</artifactId>
-			<version>${microstream.version}</version>
+			<groupId>io.helidon.health</groupId>
+			<artifactId>helidon-health</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>io.helidon.config</groupId>
-			<artifactId>helidon-config</artifactId>
-		</dependency>
+		
 		<dependency>
 			<groupId>io.helidon.config</groupId>
 			<artifactId>helidon-config-yaml</artifactId>
@@ -71,10 +56,11 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.yaml</groupId>
-			<artifactId>snakeyaml</artifactId>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
 			<scope>test</scope>
 		</dependency>
+		
 	</dependencies>
 
 </project>

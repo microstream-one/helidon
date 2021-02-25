@@ -14,7 +14,12 @@
 	<packaging>pom</packaging>
 	<name>Helidon Integrations Microstream Project</name>
 
+	<properties>
+		<microstream.version>04.02.00-MS-GA-SNAPSHOT</microstream.version>
+	</properties>
+	
 	<modules>
+		<module>cache</module>
 		<module>core</module>
 		<module>health</module>
 		<module>metrics</module>
