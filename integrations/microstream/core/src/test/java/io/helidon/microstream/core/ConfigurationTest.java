@@ -26,7 +26,7 @@ public class ConfigurationTest {
 	public void createFromConfigTest() {
 
 		Config helidonConfig = Config.builder().addSource(ClasspathConfigSource.create("/microstreamConfig.yml"))
-				.addSource(ConfigSources.create(Map.of("microstream.baseDirectory", tempDir.toString())))
+				.addSource(ConfigSources.create(Map.of("microstream.storage-directory", tempDir.toString())))
 				.build();
 
 		EmbeddedStorageManagerBuilder embeddedStorageManagerBuilder = EmbeddedStorageManagerBuilder.builder();

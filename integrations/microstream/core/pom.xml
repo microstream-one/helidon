@@ -13,10 +13,18 @@
 	<name>Helidon Integrations Microstream</name>
 	<packaging>jar</packaging>
 
+	<properties>
+		<microstream.version>04.02.00-MS-GA-SNAPSHOT</microstream.version>
+	</properties>
+
 	<repositories>
 		<repository>
 			<id>microstream-releases</id>
 			<url>https://repo.microstream.one/repository/maven-public</url>
+		</repository>
+		<repository>
+			<id>microstream-maven-snapshots</id>
+			<url>https://repo.microstream.one/repository/maven-snapshots/</url>
 		</repository>
 	</repositories>
 
@@ -24,12 +32,17 @@
 		<dependency>
 			<groupId>one.microstream</groupId>
 			<artifactId>storage.embedded</artifactId>
-			<version>04.01.00-MS-GA</version>
+			<version>${microstream.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>one.microstream</groupId>
 			<artifactId>storage.embedded.configuration</artifactId>
-			<version>04.01.00-MS-GA</version>
+			<version>${microstream.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>one.microstream</groupId>
+			<artifactId>configuration</artifactId>
+			<version>${microstream.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>io.helidon.config</groupId>

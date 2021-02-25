@@ -1,22 +1,22 @@
 package io.helidon.microstream.core;
 
+import java.time.Duration;
 import java.util.Map;
 
 import io.helidon.config.Config;
-import one.microstream.storage.configuration.Configuration;
-import one.microstream.storage.configuration.ConfigurationPropertyParser;
+import one.microstream.configuration.types.ByteSize;
+import one.microstream.storage.types.EmbeddedStorageConfigurationBuilder;
+import one.microstream.storage.types.EmbeddedStorageFoundationCreatorConfigurationBased;
 import one.microstream.storage.types.EmbeddedStorageManager;
+import one.microstream.storage.types.StorageEntityCacheEvaluator;
 
-/**
- * Fluent API builder to create a EmbeddedStorageManager instance.
- */
-public class EmbeddedStorageManagerBuilder implements io.helidon.common.Builder<EmbeddedStorageManager> {
-
-	private final Configuration configuration;
+public class EmbeddedStorageManagerBuilder implements io.helidon.common.Builder<EmbeddedStorageManager>
+{
+	private final EmbeddedStorageConfigurationBuilder configurationBuilder;
 
 	private EmbeddedStorageManagerBuilder() {
 		super();
-		configuration = Configuration.Default();
+		configurationBuilder = EmbeddedStorageConfigurationBuilder.New();
 	}
 	
     /**
@@ -41,7 +41,10 @@ public class EmbeddedStorageManagerBuilder implements io.helidon.common.Builder<
 
 	@Override
 	public EmbeddedStorageManager build() {
-		return configuration.createEmbeddedStorageFoundation().createEmbeddedStorageManager();
+		return EmbeddedStorageFoundationCreatorConfigurationBased
+			.New(configurationBuilder.buildConfiguration())
+			.createEmbeddedStorageFoundation()
+			.createEmbeddedStorageManager();
 	}
 
 	/**
@@ -52,197 +55,213 @@ public class EmbeddedStorageManagerBuilder implements io.helidon.common.Builder<
 	 */
 	public EmbeddedStorageManagerBuilder config(Config config) {
 		Map<String, String> configMap = config.detach().asMap().get();
-		ConfigurationPropertyParser.New().parseProperties(configMap, configuration);
-
+		
+		configMap.forEach( (k,v) -> configurationBuilder.set(k,v));
+		
 		return this;
 	}
 
-	public EmbeddedStorageManagerBuilder baseDirectory(String baseDirectory) {
-		configuration.setBaseDirectory(baseDirectory);
+	/** 
+	 * The base directory of the storage in the file system.
+	 */
+	public EmbeddedStorageManagerBuilder storageDirectory(String baseDirectory) {		
+		configurationBuilder.setStorageDirectory(baseDirectory);
 		return this;
 	}
 	
-	public String baseDirectory() {
-		return configuration.getBaseDirectory();
-	}
-	
+	/** 
+	 * The backup directory.
+	 */
 	public EmbeddedStorageManagerBuilder backupDirectory(String backupDirectory) {
-		configuration.setBackupDirectory(backupDirectory);
+		configurationBuilder.setBackupDirectory(backupDirectory);
 		return this;
 	}
-	
-	public String backupDirectory() {
-		return configuration.getBackupDirectory();
-	}
-	
+		
+	/** 
+	 * The deletion directory.
+	 */
 	public EmbeddedStorageManagerBuilder deletionDirectory(String deletionDirectory) {
-		configuration.setDeletionDirectory(deletionDirectory);
+		configurationBuilder.setDeletionDirectory(deletionDirectory);
 		return this;
 	}
-	
-	public String deletionDirectory() {
-		return configuration.getDeletionDirectory();
-	}
-	
+		
+	/** 
+	 * The truncation directory.
+	 */
 	public EmbeddedStorageManagerBuilder truncationDirectory(String truncationDirectory) {
-		configuration.setDeletionDirectory(truncationDirectory);
+		configurationBuilder.setDeletionDirectory(truncationDirectory);
 		return this;
 	}
-	
-	public String truncationDirectory() {
-		return configuration.getTruncationDirectory();
-	}
-	
+		
+	/** 
+	 * Name prefix of the subdirectories used by the channel threads. Default is
+	 * <code>"channel_"</code>.
+	 * @param channelDirectoryPrefix new prefix
+	 */
 	public EmbeddedStorageManagerBuilder channelDirectoryPrefix(String channelDirectoryPrefix) {
-		configuration.setChannelDirectoryPrefix(channelDirectoryPrefix);
+		configurationBuilder.setChannelDirectoryPrefix(channelDirectoryPrefix);
 		return this;
 	}
-	
-	public String channelDirectoryPrefix() {
-		return configuration.getChannelDirectoryPrefix();
-	}
-	
+		
+	/** 
+	 * Name prefix of the storage files. Default is <code>"channel_"</code>.
+	 * @param dataFilePrefix new prefix
+	 */
 	public EmbeddedStorageManagerBuilder dataFilePrefix(String dataFilePrefix) {
-		configuration.setDataFilePrefix(dataFilePrefix);
+		configurationBuilder.setDataFilePrefix(dataFilePrefix);
 		return this;
 	}
-	
-	public String dataFilePrefix() {
-		return configuration.getDataFilePrefix();
-	}
-	
+		
+	/** 
+	 * Name suffix of the storage files. Default is <code>".dat"</code>.
+	 * @param dataFileSuffix new suffix
+	 */
 	public EmbeddedStorageManagerBuilder dataFileSuffix(String dataFileSuffix) {
-		configuration.setDataFileSuffix(dataFileSuffix);
+		configurationBuilder.setDataFileSuffix(dataFileSuffix);
 		return this;
 	}
-	
-	public String dataFileSuffix() {
-		return configuration.getDataFileSuffix();
-	}
-	
+
+	/** 
+	 * Name prefix of the storage transaction file. Default is <code>"transactions_"</code>.
+	 * @param transactionFilePrefix new prefix
+	 */
 	public EmbeddedStorageManagerBuilder transactionFilePrefix(String transactionFilePrefix) {
-		configuration.setTransactionFilePrefix(transactionFilePrefix);
+		configurationBuilder.setTransactionFilePrefix(transactionFilePrefix);
 		return this;
 	}
 	
-	public String transactionFilePrefix() {
-		return configuration.getTransactionFilePrefix();
-	}
-	
+	/** 
+	 * Name suffix of the storage transaction file. Default is <code>".sft"</code>.
+	 * @param transactionFileSuffix new suffix
+	 */
 	public EmbeddedStorageManagerBuilder transactionFileSuffix(String transactionFileSuffix) {
-		configuration.setTransactionFileSuffix(transactionFileSuffix);
+		configurationBuilder.setTransactionFileSuffix(transactionFileSuffix);
 		return this;
 	}
-	
-	public String transactionFileSuffix() {
-		return configuration.getTransactionFileSuffix();
-	}
-	
+
+	/** 
+	 * The name of the dictionary file. Default is
+	 * <code>"PersistenceTypeDictionary.ptd"</code>.
+	 * @param typeDictionaryFilename new name
+	 */
 	public EmbeddedStorageManagerBuilder typeDictionaryFilename(String typeDictionaryFilename) {
-		configuration.setTypeDictionaryFilename(typeDictionaryFilename);
+		configurationBuilder.setTypeDictionaryFilename(typeDictionaryFilename);
 		return this;
 	}
-	
-	public String typeDictionaryFilename() {
-		return configuration.getTypeDictionaryFilename();
-	}
-	
+
 	public EmbeddedStorageManagerBuilder rescuedFileSuffix(String rescuedFileSuffix) {
-		configuration.setRescuedFileSuffix(rescuedFileSuffix);
+		configurationBuilder.setRescuedFileSuffix(rescuedFileSuffix);
 		return this;
 	}
-	
-	public String rescuedFileSuffix() {
-		return configuration.getRescuedFileSuffix();
-	}
-	
+
 	public EmbeddedStorageManagerBuilder lockFileName(String lockFileName) {
-		configuration.setLockFileName(lockFileName);
+		configurationBuilder.setLockFileName(lockFileName);
 		return this;
 	}
-	
-	public String lockFileName() {
-		return configuration.getLockFileName();
-	}
-	
+
+	/** 
+	 * The number of threads and number of directories used by the storage
+	 * engine. Every thread has exclusive access to its directory. Default is
+	 * <code>1</code>.
+	 * @param channelCount the new channel count, must be a power of 2
+	 */
 	public EmbeddedStorageManagerBuilder channelCount(int channelCount) {
-		configuration.setChannelCount(channelCount);
+		configurationBuilder.setChannelCount(channelCount);
 		return this;
 	}
 	
-	public int channelCount() {
-		return configuration.getChannelCount();
-	}
-	
-	public EmbeddedStorageManagerBuilder housekeepingIntervalMs(long housekeepingIntervalMs) {
-		configuration.setHousekeepingIntervalMs(housekeepingIntervalMs);
+	/** 
+	 * Interval in milliseconds for the houskeeping. This is work like garbage
+	 * collection or cache checking. In combination with {@link #housekeepingTimeBudgetNs(long)} the maximum processor
+	 * time for housekeeping work can be set. Default is <code>1000</code>
+	 * (every second).
+	 * @param houseKeepingIntervalMs the new interval
+	 * @see #housekeepingTimeBudgetNs(long)
+	 */
+	public EmbeddedStorageManagerBuilder housekeepingIntervalMs(Duration housekeepingInterval) {
+		configurationBuilder.setHousekeepingInterval(housekeepingInterval);
 		return this;
 	}
 	
-	public long housekeepingIntervalMs() {
-		return configuration.getHousekeepingIntervalMs();
-	}
-	
-	public EmbeddedStorageManagerBuilder housekeepingTimeBudgetNs(long housekeepingTimeBudgetNs) {
-		configuration.setHousekeepingTimeBudgetNs(housekeepingTimeBudgetNs);
+	/** 
+	 * Number of nanoseconds used for each housekeeping cycle. However, no
+	 * matter how low the number is, one item of work will always be completed.
+	 * But if there is nothing to clean up, no processor time will be wasted.
+	 * Default is <code>10000000</code> (10 million nanoseconds = 10
+	 * milliseconds = 0.01 seconds).
+	 * @param housekeepingTimeBudgetNs the new time budget
+	 * @see #housekeepingIntervalMs(long)
+	 */
+	public EmbeddedStorageManagerBuilder housekeepingTimeBudgetNs(Duration housekeepingTimeBudget) {
+		configurationBuilder.setHousekeepingTimeBudget(housekeepingTimeBudget);
 		return this;
 	}
-	
-	public long housekeepingTimeBudgetNs() {
-		return configuration.getHousekeepingTimeBudgetNs();
-	}
-	
-	public EmbeddedStorageManagerBuilder entityCacheTimeoutMs(long entityCacheTimeoutMs) {
-		configuration.setEntityCacheTimeoutMs(entityCacheTimeoutMs);
+
+	/** 
+	 * Timeout in milliseconds for the entity cache evaluator. If an entity
+	 * wasn't accessed in this timespan it will be removed from the cache.
+	 * Default is <code>86400000</code> (1 day).
+	 * @param entityCacheTimeoutMs
+	 * @see Duration
+	 */
+	public EmbeddedStorageManagerBuilder entityCacheTimeoutMs(Duration entityCacheTimeout) {
+		configurationBuilder.setEntityCacheTimeout(entityCacheTimeout);
 		return this;
 	}
-	
-	public long entityCacheTimeoutMs() {
-		return configuration.getEntityCacheTimeoutMs();
-	}
-	
+
+	/** 
+	 * Abstract threshold value for the lifetime of entities in the cache. See {@link StorageEntityCacheEvaluator}. Default is <code>1000000000</code>.
+	 * @param entityCacheThreshold the new threshold
+	 */
 	public EmbeddedStorageManagerBuilder entityCacheThreshold(long entityCacheThreshold) {
-		configuration.setEntityCacheThreshold(entityCacheThreshold);
+		configurationBuilder.setEntityCacheThreshold(entityCacheThreshold);
 		return this;
 	}
 	
-	public long entityCacheThreshold() {
-		return configuration.getEntityCacheThreshold();
-	}
-	
-	public EmbeddedStorageManagerBuilder dataFileMinimumSize(int dataFileMinimumSize) {
-		configuration.setDataFileMinimumSize(dataFileMinimumSize);
+	/** 
+	 * Minimum file size for a data file to avoid cleaning it up. Default is
+	 * 1024^2 = 1 MiB.
+	 * @param dataFileMinimumSize the new minimum file size
+	 * @see #dataFileMinimumUseRatio(double)
+	 */
+	public EmbeddedStorageManagerBuilder dataFileMinimumSize(ByteSize dataFileMinimumSize) {
+		configurationBuilder.setDataFileMinimumSize(dataFileMinimumSize);
 		return this;
 	}
 	
-	public int dataFileMinimumSize() {
-		return configuration.getDataFileMinimumSize();
-	}
-	
-	public EmbeddedStorageManagerBuilder dataFileMaximumSize(int dataFileMaximumSize) {
-		configuration.setDataFileMaximumSize(dataFileMaximumSize);
+	/** 
+	 * Maximum file size for a data file to avoid cleaning it up. Default is
+	 * 1024^2*8 = 8 MiB.
+	 * @param dataFileMaximumSize the new maximum file size
+	 * @see #dataFileMinimumUseRatio(double)
+	 */
+	public EmbeddedStorageManagerBuilder dataFileMaximumSize(ByteSize dataFileMaximumSize) {
+		configurationBuilder.setDataFileMaximumSize(dataFileMaximumSize);
 		return this;
 	}
-	
-	public int dataFileMaximumSize() {
-		return configuration.getDataFileMaximumSize();
-	}
-	
+
+	/** 
+	 * The ratio (value in ]0.0;1.0]) of non-gap data contained in a storage file to prevent
+	 * the file from being dissolved. "Gap" data is anything that is not the latest version of an entity's data,
+	 * inluding older versions of an entity and "comment" bytes (a sequence of bytes beginning with its length
+	 * as a negative value length header).<br>
+	 * The closer this value is to 1.0 (100%), the less disk space is occupied by storage files, but the more
+	 * file dissolving (data transfers to new files) is required and vice versa.
+	 * @param dataFileMinimumUseRatio the new minimum use ratio
+	 */
 	public EmbeddedStorageManagerBuilder dataFileMinimumUseRatio(double dataFileMinimumUseRatio) {
-		configuration.setDataFileMinimumUseRatio(dataFileMinimumUseRatio);
+		configurationBuilder.setDataFileMinimumUseRatio(dataFileMinimumUseRatio);
 		return this;
 	}
 	
-	public double dataFileMinimumUseRatio() {
-		return configuration.getDataFileMinimumUseRatio();
-	}
-	
+	/** 
+	 * A flag defining wether the current head file (the only file actively written to)
+	 * shall be subjected to file cleanups as well.
+	 * @param dataFileCleanupHeadFile
+	 */
 	public EmbeddedStorageManagerBuilder dataFileCleanupHeadFile(boolean dataFileCleanupHeadFile) {
-		configuration.setDataFileCleanupHeadFile(dataFileCleanupHeadFile);
+		configurationBuilder.setDataFileCleanupHeadFile(dataFileCleanupHeadFile);
 		return this;
 	}
 	
-	public boolean dataFileCleanupHeadFile() {
-		return configuration.getDataFileCleanupHeadFile();
-	}
 }
