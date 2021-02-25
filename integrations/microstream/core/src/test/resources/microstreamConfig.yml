@@ -18,5 +18,5 @@ openapi:
     port: 0
     
 microstream:
-    channelCount             : 4
-    housekeepingIntervalMs   : 2000
+    channel-count           : 4
+    housekeeping-interval   : 2000ms
