@@ -45,6 +45,36 @@
 			<artifactId>helidon-config</artifactId>
 		</dependency>
 		<dependency>
+            <groupId>io.helidon.common</groupId>
+            <artifactId>helidon-common-context</artifactId>
+        </dependency>
+		<dependency>
+			<groupId>org.jboss</groupId>
+			<artifactId>jandex</artifactId>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>jakarta.annotation</groupId>
+			<artifactId>jakarta.annotation-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>jakarta.enterprise</groupId>
+			<artifactId>jakarta.enterprise.cdi-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.helidon.microprofile.cdi</groupId>
+			<artifactId>helidon-microprofile-cdi</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+		    <groupId>io.helidon.microprofile.tests</groupId>
+		    <artifactId>helidon-microprofile-tests-junit5</artifactId>
+		    <scope>test</scope>
+		</dependency>
+		<dependency>
 			<groupId>io.helidon.config</groupId>
 			<artifactId>helidon-config-yaml</artifactId>
 			<scope>test</scope>
