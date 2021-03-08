@@ -18,23 +18,23 @@ public class EmbeddedStorageManagerBuilder implements io.helidon.common.Builder<
 		super();
 		configurationBuilder = EmbeddedStorageConfigurationBuilder.New();
 	}
-	
-    /**
-     * A builder for the EmbeddedStorageManager.
-     *
-     * @return a new fluent API builder
-     */
+
+	/**
+	 * A builder for the EmbeddedStorageManager.
+	 *
+	 * @return a new fluent API builder
+	 */
 	public static EmbeddedStorageManagerBuilder builder() {
 		return new EmbeddedStorageManagerBuilder();
 	}
 
-    /**
-     * 
-     * Create a EmbeddedStorageManager instance from Config
-     * 
-     * @param config configuration to use
-     * @return new EmbeddedStorageManager instance
-     */
+	/**
+	 *
+	 * Create a EmbeddedStorageManager instance from Config
+	 *
+	 * @param config configuration to use
+	 * @return new EmbeddedStorageManager instance
+	 */
 	public static EmbeddedStorageManager create(Config config) {
 		return builder().config(config).build();
 	}
@@ -42,58 +42,58 @@ public class EmbeddedStorageManagerBuilder implements io.helidon.common.Builder<
 	@Override
 	public EmbeddedStorageManager build() {
 		return EmbeddedStorageFoundationCreatorConfigurationBased
-			.New(configurationBuilder.buildConfiguration())
-			.createEmbeddedStorageFoundation()
-			.createEmbeddedStorageManager();
+				.New(configurationBuilder.buildConfiguration())
+				.createEmbeddedStorageFoundation()
+				.createEmbeddedStorageManager();
 	}
 
 	/**
 	 * Update builder from configuration.
-	 * 
+	 *
 	 * @param config
 	 * @return the fluent API builder
 	 */
 	public EmbeddedStorageManagerBuilder config(Config config) {
 		Map<String, String> configMap = config.detach().asMap().get();
-		
+
 		configMap.forEach( (k,v) -> configurationBuilder.set(k,v));
-		
+
 		return this;
 	}
 
-	/** 
+	/**
 	 * The base directory of the storage in the file system.
 	 */
-	public EmbeddedStorageManagerBuilder storageDirectory(String baseDirectory) {		
+	public EmbeddedStorageManagerBuilder storageDirectory(String baseDirectory) {
 		configurationBuilder.setStorageDirectory(baseDirectory);
 		return this;
 	}
-	
-	/** 
+
+	/**
 	 * The backup directory.
 	 */
 	public EmbeddedStorageManagerBuilder backupDirectory(String backupDirectory) {
 		configurationBuilder.setBackupDirectory(backupDirectory);
 		return this;
 	}
-		
-	/** 
+
+	/**
 	 * The deletion directory.
 	 */
 	public EmbeddedStorageManagerBuilder deletionDirectory(String deletionDirectory) {
 		configurationBuilder.setDeletionDirectory(deletionDirectory);
 		return this;
 	}
-		
-	/** 
+
+	/**
 	 * The truncation directory.
 	 */
 	public EmbeddedStorageManagerBuilder truncationDirectory(String truncationDirectory) {
 		configurationBuilder.setDeletionDirectory(truncationDirectory);
 		return this;
 	}
-		
-	/** 
+
+	/**
 	 * Name prefix of the subdirectories used by the channel threads. Default is
 	 * <code>"channel_"</code>.
 	 * @param channelDirectoryPrefix new prefix
@@ -102,8 +102,8 @@ public class EmbeddedStorageManagerBuilder implements io.helidon.common.Builder<
 		configurationBuilder.setChannelDirectoryPrefix(channelDirectoryPrefix);
 		return this;
 	}
-		
-	/** 
+
+	/**
 	 * Name prefix of the storage files. Default is <code>"channel_"</code>.
 	 * @param dataFilePrefix new prefix
 	 */
@@ -111,8 +111,8 @@ public class EmbeddedStorageManagerBuilder implements io.helidon.common.Builder<
 		configurationBuilder.setDataFilePrefix(dataFilePrefix);
 		return this;
 	}
-		
-	/** 
+
+	/**
 	 * Name suffix of the storage files. Default is <code>".dat"</code>.
 	 * @param dataFileSuffix new suffix
 	 */
@@ -121,7 +121,7 @@ public class EmbeddedStorageManagerBuilder implements io.helidon.common.Builder<
 		return this;
 	}
 
-	/** 
+	/**
 	 * Name prefix of the storage transaction file. Default is <code>"transactions_"</code>.
 	 * @param transactionFilePrefix new prefix
 	 */
@@ -129,8 +129,8 @@ public class EmbeddedStorageManagerBuilder implements io.helidon.common.Builder<
 		configurationBuilder.setTransactionFilePrefix(transactionFilePrefix);
 		return this;
 	}
-	
-	/** 
+
+	/**
 	 * Name suffix of the storage transaction file. Default is <code>".sft"</code>.
 	 * @param transactionFileSuffix new suffix
 	 */
@@ -139,13 +139,13 @@ public class EmbeddedStorageManagerBuilder implements io.helidon.common.Builder<
 		return this;
 	}
 
-	/** 
+	/**
 	 * The name of the dictionary file. Default is
 	 * <code>"PersistenceTypeDictionary.ptd"</code>.
 	 * @param typeDictionaryFilename new name
 	 */
 	public EmbeddedStorageManagerBuilder typeDictionaryFilename(String typeDictionaryFilename) {
-		configurationBuilder.setTypeDictionaryFilename(typeDictionaryFilename);
+		configurationBuilder.setTypeDictionaryFileName(typeDictionaryFilename);
 		return this;
 	}
 
@@ -159,7 +159,7 @@ public class EmbeddedStorageManagerBuilder implements io.helidon.common.Builder<
 		return this;
 	}
 
-	/** 
+	/**
 	 * The number of threads and number of directories used by the storage
 	 * engine. Every thread has exclusive access to its directory. Default is
 	 * <code>1</code>.
@@ -169,8 +169,8 @@ public class EmbeddedStorageManagerBuilder implements io.helidon.common.Builder<
 		configurationBuilder.setChannelCount(channelCount);
 		return this;
 	}
-	
-	/** 
+
+	/**
 	 * Interval in milliseconds for the houskeeping. This is work like garbage
 	 * collection or cache checking. In combination with {@link #housekeepingTimeBudgetNs(long)} the maximum processor
 	 * time for housekeeping work can be set. Default is <code>1000</code>
@@ -182,8 +182,8 @@ public class EmbeddedStorageManagerBuilder implements io.helidon.common.Builder<
 		configurationBuilder.setHousekeepingInterval(housekeepingInterval);
 		return this;
 	}
-	
-	/** 
+
+	/**
 	 * Number of nanoseconds used for each housekeeping cycle. However, no
 	 * matter how low the number is, one item of work will always be completed.
 	 * But if there is nothing to clean up, no processor time will be wasted.
@@ -197,7 +197,7 @@ public class EmbeddedStorageManagerBuilder implements io.helidon.common.Builder<
 		return this;
 	}
 
-	/** 
+	/**
 	 * Timeout in milliseconds for the entity cache evaluator. If an entity
 	 * wasn't accessed in this timespan it will be removed from the cache.
 	 * Default is <code>86400000</code> (1 day).
@@ -209,7 +209,7 @@ public class EmbeddedStorageManagerBuilder implements io.helidon.common.Builder<
 		return this;
 	}
 
-	/** 
+	/**
 	 * Abstract threshold value for the lifetime of entities in the cache. See {@link StorageEntityCacheEvaluator}. Default is <code>1000000000</code>.
 	 * @param entityCacheThreshold the new threshold
 	 */
@@ -217,8 +217,8 @@ public class EmbeddedStorageManagerBuilder implements io.helidon.common.Builder<
 		configurationBuilder.setEntityCacheThreshold(entityCacheThreshold);
 		return this;
 	}
-	
-	/** 
+
+	/**
 	 * Minimum file size for a data file to avoid cleaning it up. Default is
 	 * 1024^2 = 1 MiB.
 	 * @param dataFileMinimumSize the new minimum file size
@@ -228,8 +228,8 @@ public class EmbeddedStorageManagerBuilder implements io.helidon.common.Builder<
 		configurationBuilder.setDataFileMinimumSize(dataFileMinimumSize);
 		return this;
 	}
-	
-	/** 
+
+	/**
 	 * Maximum file size for a data file to avoid cleaning it up. Default is
 	 * 1024^2*8 = 8 MiB.
 	 * @param dataFileMaximumSize the new maximum file size
@@ -240,7 +240,7 @@ public class EmbeddedStorageManagerBuilder implements io.helidon.common.Builder<
 		return this;
 	}
 
-	/** 
+	/**
 	 * The ratio (value in ]0.0;1.0]) of non-gap data contained in a storage file to prevent
 	 * the file from being dissolved. "Gap" data is anything that is not the latest version of an entity's data,
 	 * inluding older versions of an entity and "comment" bytes (a sequence of bytes beginning with its length
@@ -253,8 +253,8 @@ public class EmbeddedStorageManagerBuilder implements io.helidon.common.Builder<
 		configurationBuilder.setDataFileMinimumUseRatio(dataFileMinimumUseRatio);
 		return this;
 	}
-	
-	/** 
+
+	/**
 	 * A flag defining wether the current head file (the only file actively written to)
 	 * shall be subjected to file cleanups as well.
 	 * @param dataFileCleanupHeadFile
@@ -263,5 +263,5 @@ public class EmbeddedStorageManagerBuilder implements io.helidon.common.Builder<
 		configurationBuilder.setDataFileCleanupHeadFile(dataFileCleanupHeadFile);
 		return this;
 	}
-	
+
 }
