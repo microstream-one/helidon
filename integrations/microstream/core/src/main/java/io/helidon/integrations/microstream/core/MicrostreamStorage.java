@@ -1,8 +1,7 @@
 package io.helidon.integrations.microstream.core;
 
-import static java.lang.annotation.ElementType.CONSTRUCTOR;
 import static java.lang.annotation.ElementType.FIELD;
-import static java.lang.annotation.ElementType.METHOD;
+import static java.lang.annotation.ElementType.PARAMETER;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 import java.lang.annotation.Retention;
@@ -12,7 +11,7 @@ import javax.inject.Qualifier;
 
 @Qualifier
 @Retention(RUNTIME)
-@Target({METHOD, CONSTRUCTOR, FIELD})
+@Target({FIELD, PARAMETER})
 public @interface MicrostreamStorage {
 	String configNode();
 }
