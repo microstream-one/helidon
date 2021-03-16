@@ -33,6 +33,10 @@ CacheConfiguration.Builder<K, V>, io.helidon.common.Builder<CacheConfiguration<K
 				CacheConfiguration.Builder(keyType, valueType));
 	}
 
+	public static MicrostreamCacheConfigurationBuilder<?,?> builder(Config config) {
+		return builder(config, null, null);
+	}
+
 	/**
 	 * Create a CacheConfiguration builder with default values
 	 *
@@ -42,7 +46,7 @@ CacheConfiguration.Builder<K, V>, io.helidon.common.Builder<CacheConfiguration<K
 	 * @param valueType
 	 * @return
 	 */
-	static <K, V> MicrostreamCacheConfigurationBuilder<K, V> builder(Class<K> keyType, Class<V> valueType) {
+	public static <K, V> MicrostreamCacheConfigurationBuilder<K, V> builder(Class<K> keyType, Class<V> valueType) {
 		return new MicrostreamCacheConfigurationBuilder<>(keyType, valueType);
 	}
 
@@ -57,10 +61,12 @@ CacheConfiguration.Builder<K, V>, io.helidon.common.Builder<CacheConfiguration<K
 	 * @param valueType
 	 * @return
 	 */
-	static <K, V> MicrostreamCacheConfigurationBuilder<K, V> builder(Config config, Class<K> keyType,
+	public static <K, V> MicrostreamCacheConfigurationBuilder<K, V> builder(Config config, Class<K> keyType,
 			Class<V> valueType) {
 		one.microstream.configuration.types.Configuration.Builder configurationBuilder = Configuration.Builder();
-		config.detach().asMap().get().forEach(configurationBuilder::set);
+		if(config.exists()) {
+			config.detach().asMap().get().forEach(configurationBuilder::set);
+		}
 
 		Configuration configuration = configurationBuilder.buildConfiguration();
 		configuration.opt(KEY_TYPE).ifPresent((s) -> verifyType(s, keyType));
@@ -144,11 +150,10 @@ CacheConfiguration.Builder<K, V>, io.helidon.common.Builder<CacheConfiguration<K
 		return this;
 	}
 
-	private static void verifyType(String typeName, Class<?> expectedType) {
-		if (!typeName.equals(expectedType.getTypeName())) {
-			throw new ConfigException("Microstream cache-config type missmatch, expected: " + expectedType.getTypeName()
-			+ " got: " + typeName);
+	private static void verifyType(String typeName, Class<?> actualType) {
+		if (!typeName.equals(actualType.getTypeName())) {
+			throw new ConfigException("Microstream cache-config type missmatch, expected value from configuration: " + typeName
+					+ " but got: " + actualType.getTypeName());
 		}
 	}
-
 }
