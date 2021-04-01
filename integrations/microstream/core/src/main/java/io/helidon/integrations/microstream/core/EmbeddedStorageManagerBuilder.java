@@ -5,9 +5,9 @@ import java.util.Map;
 
 import io.helidon.config.Config;
 import one.microstream.configuration.types.ByteSize;
-import one.microstream.storage.types.EmbeddedStorageConfigurationBuilder;
-import one.microstream.storage.types.EmbeddedStorageFoundationCreatorConfigurationBased;
-import one.microstream.storage.types.EmbeddedStorageManager;
+import one.microstream.storage.embedded.configuration.EmbeddedStorageConfigurationBuilder;
+import one.microstream.storage.embedded.configuration.EmbeddedStorageFoundationCreatorConfigurationBased;
+import one.microstream.storage.embedded.types.EmbeddedStorageManager;
 import one.microstream.storage.types.StorageEntityCacheEvaluator;
 
 public class EmbeddedStorageManagerBuilder implements io.helidon.common.Builder<EmbeddedStorageManager>

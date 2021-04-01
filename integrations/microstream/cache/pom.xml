@@ -17,7 +17,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>one.microstream</groupId>
-			<artifactId>cache</artifactId>
+			<artifactId>microstream-cache</artifactId>
 			<version>${microstream.version}</version>
 		</dependency>
 		<dependency>

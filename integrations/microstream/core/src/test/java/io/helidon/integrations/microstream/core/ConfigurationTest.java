@@ -15,8 +15,7 @@ import org.junit.jupiter.api.io.TempDir;
 import io.helidon.config.ClasspathConfigSource;
 import io.helidon.config.Config;
 import io.helidon.config.ConfigSources;
-import io.helidon.integrations.microstream.core.EmbeddedStorageManagerBuilder;
-import one.microstream.storage.types.EmbeddedStorageManager;
+import one.microstream.storage.embedded.types.EmbeddedStorageManager;
 
 public class ConfigurationTest {
 

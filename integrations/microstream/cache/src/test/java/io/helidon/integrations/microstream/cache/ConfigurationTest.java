@@ -22,8 +22,8 @@ import org.mockito.Mockito;
 
 import io.helidon.config.Config;
 import io.helidon.config.ConfigSources;
-import one.microstream.cache.CacheConfiguration;
-import one.microstream.cache.EvictionManager;
+import one.microstream.cache.types.CacheConfiguration;
+import one.microstream.cache.types.EvictionManager;
 
 public class ConfigurationTest {
 
