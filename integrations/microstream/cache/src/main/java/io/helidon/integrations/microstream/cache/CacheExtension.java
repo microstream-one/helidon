@@ -20,7 +20,7 @@ import javax.enterprise.inject.spi.ProcessInjectionPoint;
 
 import io.helidon.common.GenericType;
 import io.helidon.config.Config;
-import one.microstream.cache.Cache;
+import one.microstream.cache.types.Cache;
 
 public class CacheExtension implements Extension {
 

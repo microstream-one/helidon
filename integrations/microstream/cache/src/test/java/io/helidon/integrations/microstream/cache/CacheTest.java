@@ -9,8 +9,8 @@ import org.junit.jupiter.api.io.TempDir;
 import io.helidon.config.ClasspathConfigSource;
 import io.helidon.config.Config;
 import io.helidon.config.ConfigSources;
-import one.microstream.cache.Cache;
-import one.microstream.cache.CacheConfiguration;
+import one.microstream.cache.types.Cache;
+import one.microstream.cache.types.CacheConfiguration;
 
 public class CacheTest {
 

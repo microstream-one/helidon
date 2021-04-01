@@ -10,11 +10,11 @@ import javax.cache.integration.CacheLoader;
 import javax.cache.integration.CacheWriter;
 
 import io.helidon.config.Config;
-import one.microstream.cache.CacheConfiguration;
-import one.microstream.cache.CacheConfiguration.Builder;
-import one.microstream.cache.CacheConfigurationBuilderConfigurationBased;
-import one.microstream.cache.CacheConfigurationPropertyNames;
-import one.microstream.cache.EvictionManager;
+import one.microstream.cache.types.CacheConfiguration;
+import one.microstream.cache.types.CacheConfiguration.Builder;
+import one.microstream.cache.types.CacheConfigurationBuilderConfigurationBased;
+import one.microstream.cache.types.CacheConfigurationPropertyNames;
+import one.microstream.cache.types.EvictionManager;
 import one.microstream.configuration.types.Configuration;
 
 public class MicrostreamCacheConfigurationBuilder<K, V> implements CacheConfigurationPropertyNames,

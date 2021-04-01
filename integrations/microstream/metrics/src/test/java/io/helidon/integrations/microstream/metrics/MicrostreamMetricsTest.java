@@ -15,10 +15,9 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-import io.helidon.integrations.microstream.metrics.MicrostreamMetricsSupport;
 import io.helidon.metrics.RegistryFactory;
 import one.microstream.X;
-import one.microstream.storage.types.EmbeddedStorageManager;
+import one.microstream.storage.embedded.types.EmbeddedStorageManager;
 import one.microstream.storage.types.StorageRawFileStatistics;
 
 public class MicrostreamMetricsTest {

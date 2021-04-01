@@ -13,7 +13,7 @@ import org.eclipse.microprofile.metrics.Tag;
 import io.helidon.config.Config;
 import io.helidon.metrics.MetricsSupport;
 import io.helidon.metrics.RegistryFactory;
-import one.microstream.storage.types.EmbeddedStorageManager;
+import one.microstream.storage.embedded.types.EmbeddedStorageManager;
 
 public class MicrostreamMetricsSupport {
 

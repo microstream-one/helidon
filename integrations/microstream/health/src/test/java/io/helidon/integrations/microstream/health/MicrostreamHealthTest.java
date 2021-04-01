@@ -11,8 +11,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-import io.helidon.integrations.microstream.health.MicrostreamHealthCheck;
-import one.microstream.storage.types.EmbeddedStorageManager;
+import one.microstream.storage.embedded.types.EmbeddedStorageManager;
 
 public class MicrostreamHealthTest {
 	private EmbeddedStorageManager embeddedStorageManager;
