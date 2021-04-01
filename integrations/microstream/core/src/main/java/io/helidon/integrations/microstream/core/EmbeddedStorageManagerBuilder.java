@@ -172,13 +172,13 @@ public class EmbeddedStorageManagerBuilder implements io.helidon.common.Builder<
 
 	/**
 	 * Interval in milliseconds for the houskeeping. This is work like garbage
-	 * collection or cache checking. In combination with {@link #housekeepingTimeBudgetNs(long)} the maximum processor
+	 * collection or cache checking. In combination with {@link #housekeepingTimeBudget(Duration)} the maximum processor
 	 * time for housekeeping work can be set. Default is <code>1000</code>
 	 * (every second).
-	 * @param houseKeepingIntervalMs the new interval
-	 * @see #housekeepingTimeBudgetNs(long)
+	 * @param housekeepingInterval the new interval
+	 * @see #housekeepingTimeBudget(Duration)
 	 */
-	public EmbeddedStorageManagerBuilder housekeepingIntervalMs(Duration housekeepingInterval) {
+	public EmbeddedStorageManagerBuilder housekeepingInterval(Duration housekeepingInterval) {
 		configurationBuilder.setHousekeepingInterval(housekeepingInterval);
 		return this;
 	}
@@ -189,10 +189,10 @@ public class EmbeddedStorageManagerBuilder implements io.helidon.common.Builder<
 	 * But if there is nothing to clean up, no processor time will be wasted.
 	 * Default is <code>10000000</code> (10 million nanoseconds = 10
 	 * milliseconds = 0.01 seconds).
-	 * @param housekeepingTimeBudgetNs the new time budget
-	 * @see #housekeepingIntervalMs(long)
+	 * @param housekeepingTimeBudget the new time budget
+	 * @see #housekeepingInterval(Duration)
 	 */
-	public EmbeddedStorageManagerBuilder housekeepingTimeBudgetNs(Duration housekeepingTimeBudget) {
+	public EmbeddedStorageManagerBuilder housekeepingTimeBudget(Duration housekeepingTimeBudget) {
 		configurationBuilder.setHousekeepingTimeBudget(housekeepingTimeBudget);
 		return this;
 	}
@@ -201,10 +201,10 @@ public class EmbeddedStorageManagerBuilder implements io.helidon.common.Builder<
 	 * Timeout in milliseconds for the entity cache evaluator. If an entity
 	 * wasn't accessed in this timespan it will be removed from the cache.
 	 * Default is <code>86400000</code> (1 day).
-	 * @param entityCacheTimeoutMs
+	 * @param entityCacheTimeout
 	 * @see Duration
 	 */
-	public EmbeddedStorageManagerBuilder entityCacheTimeoutMs(Duration entityCacheTimeout) {
+	public EmbeddedStorageManagerBuilder entityCacheTimeout(Duration entityCacheTimeout) {
 		configurationBuilder.setEntityCacheTimeout(entityCacheTimeout);
 		return this;
 	}
@@ -243,7 +243,7 @@ public class EmbeddedStorageManagerBuilder implements io.helidon.common.Builder<
 	/**
 	 * The ratio (value in ]0.0;1.0]) of non-gap data contained in a storage file to prevent
 	 * the file from being dissolved. "Gap" data is anything that is not the latest version of an entity's data,
-	 * inluding older versions of an entity and "comment" bytes (a sequence of bytes beginning with its length
+	 * including older versions of an entity and "comment" bytes (a sequence of bytes beginning with its length
 	 * as a negative value length header).<br>
 	 * The closer this value is to 1.0 (100%), the less disk space is occupied by storage files, but the more
 	 * file dissolving (data transfers to new files) is required and vice versa.
@@ -255,7 +255,7 @@ public class EmbeddedStorageManagerBuilder implements io.helidon.common.Builder<
 	}
 
 	/**
-	 * A flag defining wether the current head file (the only file actively written to)
+	 * A flag defining weather the current head file (the only file actively written to)
 	 * shall be subjected to file cleanups as well.
 	 * @param dataFileCleanupHeadFile
 	 */
