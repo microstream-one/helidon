@@ -255,7 +255,7 @@ public class EmbeddedStorageManagerBuilder implements io.helidon.common.Builder<
 	}
 
 	/**
-	 * A flag defining weather the current head file (the only file actively written to)
+	 * A flag defining whether the current head file (the only file actively written to)
 	 * shall be subjected to file cleanups as well.
 	 * @param dataFileCleanupHeadFile
 	 */
