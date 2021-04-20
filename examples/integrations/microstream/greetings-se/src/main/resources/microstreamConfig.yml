@@ -1,0 +1,4 @@
+    
+microstream:
+    channel-count           : 4
+    housekeeping-interval   : 2000ms
