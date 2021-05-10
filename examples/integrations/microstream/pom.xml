@@ -15,5 +15,6 @@
 	
 	<modules>
 		<module>greetings-se</module>
+		<module>greetings-mp</module>
 	</modules>
 </project>
