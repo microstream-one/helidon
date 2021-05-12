@@ -186,7 +186,6 @@
         <module>logging</module>
         <module>scheduling</module>
         <module>service-common</module>
-		<module>microstream</module>
     </modules>
 
 
