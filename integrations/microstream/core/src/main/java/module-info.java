@@ -17,4 +17,7 @@ module io.helidon.integrations.microstream {
 	requires transitive microstream.storage;
 	requires transitive microstream.storage.embedded;
 	requires transitive microstream.storage.embedded.configuration;
+
+	provides javax.enterprise.inject.spi.Extension
+	with io.helidon.integrations.microstream.core.EmbeddedStorageManagerExtension;
 }

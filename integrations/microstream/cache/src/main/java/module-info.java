@@ -14,4 +14,7 @@ module io.helidon.integrations.microstream.cache {
 	requires microprofile.health.api;
 	requires transitive microstream.cache;
 	requires transitive io.helidon.integrations.microstream;
+
+	provides javax.enterprise.inject.spi.Extension
+	with io.helidon.integrations.microstream.cache.CacheExtension;
 }
