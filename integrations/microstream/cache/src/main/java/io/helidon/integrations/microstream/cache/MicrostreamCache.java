@@ -1,13 +1,13 @@
 package io.helidon.integrations.microstream.cache;
 
-import static java.lang.annotation.ElementType.FIELD;
-import static java.lang.annotation.ElementType.PARAMETER;
-import static java.lang.annotation.RetentionPolicy.RUNTIME;
-
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
 import javax.inject.Qualifier;
+
+import static java.lang.annotation.ElementType.FIELD;
+import static java.lang.annotation.ElementType.PARAMETER;
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 /**
  * Creates a cache based upon the Microstream JCache implementation.
@@ -25,6 +25,17 @@ import javax.inject.Qualifier;
 @Retention(RUNTIME)
 @Target({PARAMETER, FIELD})
 public @interface MicrostreamCache {
-	String configNode() default "one.microstream.cache.default";
-	String name();
+    /**
+     * Specifies the configuration node used to configure the EmbeddedStorageManager instance to be created.
+     *
+     * @return the configuration node
+     */
+    String configNode() default "one.microstream.cache.default";
+
+    /**
+     * Specifies the cache name.
+     *
+     * @return the cache name
+     */
+    String name();
 }
