@@ -35,7 +35,7 @@
 		</dependency>
 		<dependency>
 			<groupId>io.helidon.integrations.microstream</groupId>
-			<artifactId>helidon-integrations-microstream</artifactId>
+			<artifactId>helidon-integrations-microstream-cdi</artifactId>
 		</dependency>
 	</dependencies>
 
