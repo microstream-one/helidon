@@ -1,4 +1,4 @@
-package io.helidon.integrations.microstream.cache;
+package io.helidon.integrations.microstream.cdi;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.ParameterizedType;
@@ -18,6 +18,7 @@ import javax.enterprise.inject.spi.ProcessInjectionPoint;
 
 import io.helidon.common.GenericType;
 import io.helidon.config.Config;
+import io.helidon.integrations.microstream.cache.CacheBuilder;
 
 import one.microstream.cache.types.Cache;
 

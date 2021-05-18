@@ -1,4 +1,4 @@
-package io.helidon.integrations.microstream.core;
+package io.helidon.integrations.microstream.cdi;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;

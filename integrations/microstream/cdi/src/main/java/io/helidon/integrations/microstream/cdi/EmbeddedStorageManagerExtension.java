@@ -1,4 +1,4 @@
-package io.helidon.integrations.microstream.core;
+package io.helidon.integrations.microstream.cdi;
 
 import java.lang.annotation.Annotation;
 import java.util.HashMap;
@@ -17,6 +17,7 @@ import javax.enterprise.inject.spi.InjectionPoint;
 import javax.enterprise.inject.spi.ProcessInjectionPoint;
 
 import io.helidon.config.Config;
+import io.helidon.integrations.microstream.core.EmbeddedStorageManagerBuilder;
 
 import one.microstream.storage.embedded.types.EmbeddedStorageManager;
 
