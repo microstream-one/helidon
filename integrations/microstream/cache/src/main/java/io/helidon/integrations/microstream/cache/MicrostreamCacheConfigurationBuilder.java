@@ -53,10 +53,10 @@ CacheConfiguration.Builder<K, V>, io.helidon.common.Builder<CacheConfiguration<K
     /**
      * Create a CacheConfiguration builder with default values.
      *
-     * @param <K>
-     * @param <V>
-     * @param keyType
-     * @param valueType
+     * @param <K> type of the cache key
+     * @param <V> type of the cache value
+     * @param keyType type of the cache key
+     * @param valueType type of the cache value
      * @return a new CacheConfiguration builder
      */
     public static <K, V> MicrostreamCacheConfigurationBuilder<K, V> builder(Class<K> keyType, Class<V> valueType) {
@@ -67,11 +67,11 @@ CacheConfiguration.Builder<K, V>, io.helidon.common.Builder<CacheConfiguration<K
      * Create a CacheConfiguration builder initialized from the supplied helidon
      * configuration node.
      *
-     * @param <K>
-     * @param <V>
-     * @param config
-     * @param keyType
-     * @param valueType
+     * @param <K> type of the cache key
+     * @param <V> type of the cache value
+     * @param config helidon configuation
+     * @param keyType type of the cache key
+     * @param valueType type of the cache value
      * @return a new CacheConfiguration builder
      */
     public static <K, V> MicrostreamCacheConfigurationBuilder<K, V> builder(Config config, Class<K> keyType,

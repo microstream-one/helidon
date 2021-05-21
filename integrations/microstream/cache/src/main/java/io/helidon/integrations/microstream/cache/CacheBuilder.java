@@ -40,7 +40,7 @@ public class CacheBuilder<K, V> {
      *
      * @param <K> type of the cache key
      * @param <V> type of the cache value
-     * @param configuration CacheConfiguration<K,V>
+     * @param configuration CacheConfiguration
      * @param keyType class of the cache key
      * @param valueType class of the cache key
      * @return cache builder

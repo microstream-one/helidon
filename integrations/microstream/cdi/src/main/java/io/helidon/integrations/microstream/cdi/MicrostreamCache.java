@@ -11,12 +11,12 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 /**
  * Creates a cache based upon the Microstream JCache implementation.
- * <br><a href>https://manual.docs.microstream.one/cache/overview</a>
+ * <br>See <a href="https://manual.docs.microstream.one/cache/overview">Microstream JCache</a>
  * <p>
  * Specify the cache name by the name property.
  * <p>
  * The configNode property expects an existing Helidon config node providing configuration properties for the cache.
- * <br>See <a href>https://manual.docs.microstream.one/cache/configuration</a>
+ * <br>See <a href="https://manual.docs.microstream.one/cache/configuration">Microstream JCache configuration</a>
  * <br>If not provided the properties below "one.microstream.cache.default" will be used if existing.
  * Otherwise the build in defaults are applied.
  *
