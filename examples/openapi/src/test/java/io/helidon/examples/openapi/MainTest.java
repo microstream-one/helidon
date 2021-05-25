@@ -84,7 +84,7 @@ public class MainTest {
                 .thenAccept(jsonObject -> Assertions.assertEquals("Hello Joe!", jsonObject.getString("greeting")))
                 .toCompletableFuture()
                 .get();
-
+ 
         webClient.put()
                 .path("/greet/greeting")
                 .submit(TEST_JSON_OBJECT)
